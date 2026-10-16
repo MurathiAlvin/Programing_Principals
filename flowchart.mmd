@@ -1,0 +1,36 @@
+flowchart TD
+    A([Start]) --> B[Load accounts and transactions from files]
+    B --> C[Display main menu]
+    C --> D{User choice}
+    D -->|1 Create account| E[Read name and validate 4-digit PIN]
+    E --> F[Assign account number and set balance to zero]
+    F --> G[Save account to accounts.txt]
+    G --> C
+    D -->|2 Log in| H[Read account number and PIN]
+    H --> I{Credentials valid?}
+    I -->|No| J[Show login error]
+    J --> C
+    I -->|Yes| K[Display account menu]
+    K --> L{Account action}
+    L -->|Check balance| M[Display balance]
+    L -->|Deposit| N[Validate amount and add to balance]
+    L -->|Withdraw| O{Sufficient funds?}
+    O -->|No| P[Show insufficient funds]
+    O -->|Yes| Q[Subtract amount from balance]
+    L -->|Transfer| R[Find recipient and validate amount]
+    R --> S{Recipient valid and funds sufficient?}
+    S -->|No| T[Show transfer error]
+    S -->|Yes| U[Update both balances]
+    L -->|History| V[Display transactions for account]
+    M --> W[Save changes when required]
+    N --> W
+    Q --> W
+    U --> W
+    P --> K
+    T --> K
+    V --> K
+    W --> X{Log out?}
+    X -->|No| K
+    X -->|Yes| C
+    D -->|3 Exit| Y[Save data files]
+    Y --> Z([End])

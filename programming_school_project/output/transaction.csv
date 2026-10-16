@@ -1,0 +1,3 @@
+account_number,type,amount,balance_after
+1002,DEPOSIT,1000.00,1000.00
+1003,DEPOSIT,40000.00,40000.00
